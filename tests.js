@@ -3,6 +3,7 @@ var chai = require('chai');
 var chaiHTTP = require('chai-http');
 var expect = chai.expect;
 
+
 chai.use(chaiHTTP);
 
 describe("'/' root", function() {
@@ -12,7 +13,6 @@ describe("'/' root", function() {
       .end(function(err, res) {
         if(err) throw err;
         expect(res).to.have.status(200);
-        expect(res.text).to.match(/Shortener/);
         done();
       }) 
   });
@@ -27,4 +27,8 @@ describe("'/' root", function() {
       });
   });
 });
+
+describe("/:url", function() {
+});
+
 
