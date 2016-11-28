@@ -49,5 +49,9 @@ describe("Link model", function() {
     });
     done();
   });
+
+  it("has method getHexJSON", function() {
+    Link.getHexJSON("www.something.com");
+  });
 });
 
