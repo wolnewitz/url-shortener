@@ -1,15 +1,15 @@
 var chai = require('chai');
 var expect = chai.expect;
 var mongoose = require('mongoose');
-var model = require('./../link');
+var schema = require('./../link');
 
 // this code prevents the model from compliling twice which
 // was causing errors
 var Link 
 try {
-  Link = mongoose.model("link");
+  Link = mongoose.model("Link");
 } catch(error) {
-  Link = mongoose.model("link", model.schema);
+  Link = mongoose.model("Link", schema);
 }
 
 describe("Link model", function() {
@@ -50,8 +50,28 @@ describe("Link model", function() {
     done();
   });
 
-  it("has method getHexJSON", function() {
-    Link.getHexJSON("www.something.com");
+  describe("saveURL", function() {
+    it("saves the url and key", function(done) {
+      Link.saveURL('bit.ly');
+      Link.find({url: 'bit.ly'}, function(err, link) {
+        expect(link.length).to.equal(1);
+        expect(link[0].url).to.equal('bit.ly');
+      });
+      done();
+    });
+
+    it("saves the url only once", function(done) {
+      Link.saveURL('bit.ly');
+      Link.saveURL('bit.ly');
+      Link.saveURL('bit.ly');
+      Link.saveURL('bit.ly');
+      Link.find({url: 'bit.ly'}, function(err, link) {
+        expect(link.length).to.equal(1);
+        expect(link[0].url).to.equal('bit.ly');
+      });
+      done();
+    });
   });
+  
 });
 

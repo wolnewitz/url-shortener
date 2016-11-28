@@ -4,6 +4,8 @@ var chaiHTTP = require('chai-http');
 var expect = chai.expect;
 
 
+
+
 chai.use(chaiHTTP);
 
 describe("'/' root", function() {
@@ -29,6 +31,17 @@ describe("'/' root", function() {
 });
 
 describe("/:url", function() {
+  describe("when given a url", function() {
+    it("returns json", function(done) {
+      chai.request(app)
+        .get('/http://www.google.com')
+        .end(function(err, res) {
+          if(err) throw err;
+          expect(res).to.be.json
+        });
+    });
+  });
+  
 });
 
 
