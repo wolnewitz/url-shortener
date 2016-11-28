@@ -28,29 +28,19 @@ describe("'/' root", function() {
   });
 });
 
-describe("/:url", function() {
-  describe("when given a url", function() {
-    it("returns json", function(done) {
-      chai.request(app)
-        .get('/www.google.com')
-        .end(function(err, res) {
-          if(err) throw err;
-          expect(res).to.be.json
-          done();
-        });
-    });
-  });
-  
-  describe("when given a md5", function() {
-    //it("it redirects", function(done) {
-      //var URI = '/' + md5('http://www.google.com');
-      //chai.request(app)
-        //.get(URI)
-        //.end(function(err, res) {
-          //if(err) throw err;
-          //done();
-        //});
-    //});
+describe("/new/:url", function() {
+  it("returns json", function(done) {
+    chai.request(app)
+      .get('/new/www.testing.com')
+      .end(function(err, res) {
+        if(err) throw err;
+        expect(res).to.be.json
+        done();
+      });
   });
 });
+
+describe("/:md", function() {
+});
+
 

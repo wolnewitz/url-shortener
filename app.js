@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
   res.sendStatus(200);
 });
 
-app.get('/:url', function(req, res) {
+app.get('/new/:url', function(req, res) {
   var str = req.params.url;
   var urlOrMD5 = urlOrHex(str);
   if(urlOrMD5 === 'url') {
@@ -27,14 +27,18 @@ app.get('/:url', function(req, res) {
       var resJSON = {url: doc.url, short_url: doc.key}
       res.json(resJSON);
     });
-  } else if(urlOrMD5 === 'md5') {
-    Link.find({key: str}, function(err, doc) {
+  } else res.sendStatus(404).send("Invalid URL")
+});
+
+app.get('/:md', function(req, res) {
+  var _key = req.params.md
+  if(urlOrHex(_key) === 'md5') {
+    Link.find({key: _key}, function(err, doc) {
       if(err) throw err;
-      res.redirect(301, doc.url);
+      console.log(doc[0].url, "DOCCC");
+      res.redirect(doc[0].url);
     });
-  } else if(urlOrMD5 === undefined) {
-    res.sendStatus(404).send("Sorry not a valid URL");
-  }
+  } else { res.sendStatus(404) }
 });
 
 

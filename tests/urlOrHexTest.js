@@ -11,7 +11,7 @@ describe("urlOrHex helper", function() {
   });
 
   it("returns hex for hex values strings", function() {
-    expect(urlOrHex("00236a2ae558018ed13b5222ef1bd977")).to.equal("md5");  
+    expect(urlOrHex("00236a2ae5")).to.equal("md5");  
   });
 
   it("return false for other strings", function() {
