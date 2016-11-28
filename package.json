@@ -4,13 +4,14 @@
   "description": "url shortening microservice",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -w tests.js app.js"
+    "test": "mocha -w app.js tests/*"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "mongodb": "^2.2.11"
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.7.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

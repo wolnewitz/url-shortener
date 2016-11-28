@@ -1,4 +1,4 @@
-var app = require('./app');
+var app = require('./../app');
 var chai = require('chai');
 var chaiHTTP = require('chai-http');
 var expect = chai.expect;
