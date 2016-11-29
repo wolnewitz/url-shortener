@@ -40,7 +40,5 @@ describe("/new/:url", function() {
   });
 });
 
-describe("/:md", function() {
-});
 
 

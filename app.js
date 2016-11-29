@@ -30,16 +30,17 @@ app.get('/new/:url', function(req, res) {
   } else res.sendStatus(404).send("Invalid URL")
 });
 
-app.get('/:md', function(req, res) {
-  var _key = req.params.md
-  if(urlOrHex(_key) === 'md5') {
-    Link.find({key: _key}, function(err, doc) {
-      if(err) throw err;
-      console.log(doc[0].url, "DOCCC");
-      res.redirect(doc[0].url);
-    });
-  } else { res.sendStatus(404) }
+app.get('/:md5', function(req, res) {
+  Link.find({key: req.params.md5}, function(err, doc) {
+    if(err) throw err;
+    if(doc[0]) {
+      res.redirect(301, doc[0].url);
+    } else {
+      res.sendStatus(404, "Invalid URL");
+    } 
+  });
 });
+
 
 
 
