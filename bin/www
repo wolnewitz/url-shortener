@@ -3,7 +3,7 @@
 var app = require('./../app');
 var port = process.env.PORT || 3000; 
 var mongoose = require('mongoose');
-var URI = process.env.MONGOLAB_URI || "mongodb://localhost:27017/shortener-dev"
+var URI = process.env.MONGOLAB_URI
 
 mongoose.connect(URI, function(err) {
   console.log("URI", URI);
