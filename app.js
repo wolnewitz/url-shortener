@@ -27,17 +27,14 @@ app.get('/new/:url', function(req, res) {
       var resJSON = {url: doc.url, short_url: doc.key}
       res.json(resJSON);
     });
-  } else res.sendStatus(404).send("Invalid URL")
-});
+  }});
 
 app.get('/:md5', function(req, res) {
   Link.find({key: req.params.md5}, function(err, doc) {
     if(err) throw err;
     if(doc[0]) {
       res.redirect('http://' + doc[0].url);
-    } else {
-      res.sendStatus(404, "Invalid URL");
-    } 
+    }
   });
 });
 
