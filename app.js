@@ -34,7 +34,7 @@ app.get('/:md5', function(req, res) {
   Link.find({key: req.params.md5}, function(err, doc) {
     if(err) throw err;
     if(doc[0]) {
-      res.redirect(301, doc[0].url);
+      res.redirect(301, 'http://' + doc[0].url);
     } else {
       res.sendStatus(404, "Invalid URL");
     } 
