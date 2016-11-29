@@ -1,0 +1,16 @@
+blockquote {
+  border-left: 5px solid #eee;
+  padding: 10px
+}
+
+body {
+  padding: 10px;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
